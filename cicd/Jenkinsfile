@@ -2,7 +2,6 @@ def COLOR_MAP = ['SUCCESS': 'good', 'FAILURE': 'danger', 'UNSTABLE': 'danger', '
 
 pipeline {
     agent any
-    tools { nodejs "nodejs-10.0.0" }
     environment {
         DATE = new Date().format('yy.M')
         TAG = "${DATE}.${BUILD_NUMBER}"
