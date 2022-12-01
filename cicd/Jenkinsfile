@@ -13,19 +13,16 @@ pipeline {
                 sh 'sudo npm run build'
             }
         }
-        stage('Docker Build') {
+        stage('Docker Build and push') {
             steps {
-               sh ' sudo docker build -t test . '
+               sh "docker build -t manish8757/rancher:${GIT_COMMIT} . "
+               sh "docker login -u manish8757 -p manish123@"
+               sh "docker push manish8757/rancher:${GIT_COMMIT} "
             }
         }
 	    stage('Pushing Docker Image to Dockerhub') {
             steps {
-                script {
-                    docker.withRegistry('https://registry.hub.docker.com', 'docker_credential') {
-                        docker.image("vigneshsweekaran/easyclaim-frontend:${TAG}").push()
-                        docker.image("vigneshsweekaran/easyclaim-frontend:${TAG}").push("32011")
-                    }
-                }
+                sh " echo done "
             }
         }
     }
