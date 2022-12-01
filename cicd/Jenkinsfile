@@ -22,7 +22,7 @@ pipeline {
         }
 	    stage('Pushing Docker Image to Dockerhub') {
             steps {
-                sh " echo done "
+                sh " echo done-done "
             }
         }
     }
